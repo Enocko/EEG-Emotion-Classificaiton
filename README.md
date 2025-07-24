@@ -1,152 +1,170 @@
-<!-- # EEG Emotion Classification
 
-This project uses EEG spectral features to classify emotional states using machine learning.
+# EEG-Based Emotion Classification Using Spectral Features and Machine Learning
 
-## Folder Structure
+## 🧠 Project Overview
 
-- `data/`: Contains your dataset (`emotions.csv`)
-- `models/`: Trained model will be saved here
-- `src/`: Modular source code for each pipeline stage
-- `main.py`: Entry script to run the full pipeline
-- `requirements.txt`: List of dependencies
+This project investigates the use of EEG (electroencephalogram) spectral features to predict emotional states using machine learning models. The goal is to identify which frequency-domain features are most discriminative and build a robust, modular pipeline for training, evaluating, and predicting emotional states (e.g., Positive, Neutral, Negative).
 
-## How to Run
-
-1. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-
-2. Run the pipeline:
-   ```
-   python main.py
-   ```
-
-## Dataset
-Used dataset: [EEG Brainwave Emotion Dataset](https://www.kaggle.com/datasets/birdy654/eeg-brainwave-dataset-feeling-emotions) -->
-
-
-# EEG Emotion Classification Pipeline
-
-## Project Overview
-This project implements an EEG-based emotion classification pipeline using machine learning. It loads EEG data, preprocesses it, trains multiple classifiers, compares their performance, and visualizes results such as accuracy bar charts and confusion matrices. The best performing model is saved for later predictions.
+> **Research Question:**  
+> *Can machine learning models predict emotional states from EEG spectral features, and which features are most discriminative for emotional prediction?*
 
 ---
 
-## Features
-- Data loading and preprocessing
-- Model training with cross-validation (Random Forest, SVM, Gradient Boosting)
-- Automatic best model selection and saving
-- Visualization of model accuracies and confusion matrix
-- Predict new data using the saved model
-- Modular and easy to extend
+## 🔍 Key Features
+
+- 📊 Loads EEG dataset with thousands of spectral features  
+- 🧼 Preprocesses data (e.g., handling nulls, encoding labels)
+- 🤖 Trains multiple classifiers:
+  - Random Forest
+  - Support Vector Machine (SVM)
+  - Logistic Regression
+  - K-Nearest Neighbors
+  - Gradient Boosting
+  - Simple Deep Learning (optional)
+- 🏆 Compares model performance and selects the best
+- 📈 Visualizes:
+  - Accuracy comparisons
+  - Confusion matrix
+  - Feature importance
+- 💾 Saves best model for future predictions
+- 🔮 Predicts new emotional states on unseen EEG data
 
 ---
 
-## Setup and Installation
+## 📁 Project Structure
 
-### 1. Clone the repository
+```
+
+eeg-emotion-classification/
+├── data/
+│   └── emotions.csv             # Original EEG dataset
+├── models/
+│   └── model.pkl                # Saved best ML model
+├── notebooks/                   # Jupyter exploration notebooks
+│   └── analysis.ipynb
+├── src/
+│   ├── load\_data.py             # Dataset loader
+│   ├── preprocess.py            # Preprocessing logic
+│   ├── train\_models.py          # Training and evaluation
+│   ├── visualize.py             # Plotting and charts
+│   └── predict.py               # Inference on new data
+├── main.py                      # End-to-end pipeline runner
+├── requirements.txt             # Dependencies
+└── README.md                    # You’re here
+
+````
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repo
+
 ```bash
-git clone <your-repo-URL>
-cd <your-repo-folder>
-2. Create and activate a virtual environment
-On macOS/Linux:
+git clone https://github.com/yourusername/eeg-emotion-classification.git
+cd eeg-emotion-classification
+````
 
-bash
-Copy
-Edit
+### 2. Create Virtual Environment
+
+**macOS/Linux:**
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-On Windows:
+```
 
-bash
-Copy
-Edit
+**Windows:**
+
+```bash
 python -m venv venv
 venv\Scripts\activate
-3. Install dependencies
-bash
-Copy
-Edit
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
-Dataset
-Place your EEG dataset CSV file at:
+```
 
-bash
-Copy
-Edit
+### 4. Add Dataset
+
+Place your EEG dataset here:
+
+```bash
 data/emotions.csv
-Dataset format:
+```
 
-One column for labels (e.g., NEGATIVE, NEUTRAL, POSITIVE)
+> Ensure:
+>
+> * Label column is named `label`
+> * All other columns are numerical EEG features
 
-Other columns as numeric EEG features
+---
 
-Running the Pipeline
-To run the full pipeline (data loading, preprocessing, training, evaluation, visualization):
+## 🚀 Run the Pipeline
 
-bash
-Copy
-Edit
+### Full Training & Evaluation
+
+```bash
 python main.py
+```
+
 This will:
 
-Load and preprocess data
+* Load and preprocess data
+* Train and evaluate all models
+* Visualize performance and feature importances
+* Save best model to `models/model.pkl`
 
-Train models with cross-validation
+---
 
-Display accuracy summary and bar chart
+## 🔮 Predict on New Data
 
-Plot confusion matrix for the best model
+Use the trained model to predict emotional states:
 
-Save the best model at models/model.pkl
-
-Predicting New Data
-To predict labels on new EEG data using the saved model:
-
-bash
-Copy
-Edit
+```bash
 python src/predict.py --file data/new_eeg_data.csv
-Replace data/new_eeg_data.csv with your new dataset path.
+```
 
-Visualizations
-Accuracy Bar Chart: Compares the test accuracies of all trained models.
+> Your new file should follow the same format (no label column, only features)
 
-Confusion Matrix: Shows classification performance of the best model.
+---
 
-(Add screenshots here if possible for better presentation)
+## 📊 Visualizations
 
-Project Structure
-bash
-Copy
-Edit
-├── data/
-│   └── emotions.csv          # Dataset
-├── models/
-│   └── model.pkl             # Saved best model
-├── src/
-│   ├── load_data.py          # Data loading functions
-│   ├── preprocess.py         # Preprocessing functions
-│   ├── train_models.py       # Model training and selection
-│   ├── visualize.py          # Plotting functions
-│   └── predict.py            # Prediction script
-├── main.py                   # Pipeline entry point
-├── requirements.txt          # Dependencies
-└── README.md                 # This file
-Notes
-Make sure to NOT commit your venv/ and models/ folders by using .gitignore
+* **Accuracy Bar Chart** — easily compare all model accuracies
+* **Confusion Matrix** — highlights classification strengths and weaknesses
+* **Feature Importance (Random Forest)** — understand what brain signals matter most
 
-You can easily add new models by extending train_models.py
+---
 
-The pipeline uses scikit-learn for ML and matplotlib for visualization
+## 📌 Sample Results
 
-License
-(Add license info here if applicable)
+| Model                   | Accuracy | Precision | Recall | F1-score |
+| ----------------------- | -------- | --------- | ------ | -------- |
+| Gradient Boosting       | 99.8%    | 99.7%     | 99.8%  | 99.8%    |
+| Random Forest           | 98.8%    | 98.8%     | 98.8%  | 98.8%    |
+| Deep Learning (reduced) | 90.6%    | N/A       | N/A    | N/A      |
+| Logistic Regression     | 42.2%    | 31.3%     | 42.2%  | 34.2%    |
+| SVM                     | 38.4%    | 35.9%     | 38.4%  | 25.0%    |
 
-Contact
-For questions or contributions, please contact:
+---
 
-Your Name – [your.email@example.com]
+## 📚 Research Insights
 
-Happy coding and analyzing EEG data!
+* The top EEG features (e.g., `min_q_5_b`, `mean_d_15_b`, `fft_742_b`) were dominant in emotion prediction.
+* Random Forest and Gradient Boosting consistently outperformed other models.
+* Dimensionality reduction helped improve Logistic Regression and Deep Learning models.
+* Deep learning models show potential but need further optimization.
+
+---
+
+## 📌 Notes
+
+* The `data/`, `models/`, and `venv/` folders should be excluded from GitHub using `.gitignore`
+* Extend model training in `train_models.py` to add custom ML/DL models
+* For deep learning, consider using PyTorch or TensorFlow with hyperparameter tuning
+
+
+
