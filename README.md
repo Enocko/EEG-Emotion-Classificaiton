@@ -1,7 +1,7 @@
 
 # EEG-Based Emotion Classification Using Spectral Features and Machine Learning
 
-## 🧠 Project Overview
+##  Project Overview
 
 This project investigates the use of EEG (electroencephalogram) spectral features to predict emotional states using machine learning models. The goal is to identify which frequency-domain features are most discriminative and build a robust, modular pipeline for training, evaluating, and predicting emotional states (e.g., Positive, Neutral, Negative).
 
@@ -10,28 +10,28 @@ This project investigates the use of EEG (electroencephalogram) spectral feature
 
 ---
 
-## 🔍 Key Features
+##  Key Features
 
-- 📊 Loads EEG dataset with thousands of spectral features  
-- 🧼 Preprocesses data (e.g., handling nulls, encoding labels)
-- 🤖 Trains multiple classifiers:
+- Loads EEG dataset with thousands of spectral features  
+- Preprocesses data (e.g., handling nulls, encoding labels)
+- Trains multiple classifiers:
   - Random Forest
   - Support Vector Machine (SVM)
   - Logistic Regression
   - K-Nearest Neighbors
   - Gradient Boosting
   - Simple Deep Learning (optional)
-- 🏆 Compares model performance and selects the best
+- Compares model performance and selects the best
 - 📈 Visualizes:
   - Accuracy comparisons
   - Confusion matrix
   - Feature importance
-- 💾 Saves best model for future predictions
-- 🔮 Predicts new emotional states on unseen EEG data
+- Saves best model for future predictions
+- Predicts new emotional states on unseen EEG data
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 
@@ -102,7 +102,7 @@ data/emotions.csv
 
 ---
 
-## 🚀 Run the Pipeline
+##  Run the Pipeline
 
 ### Full Training & Evaluation
 
@@ -119,7 +119,7 @@ This will:
 
 ---
 
-## 🔮 Predict on New Data
+##  Predict on New Data
 
 Use the trained model to predict emotional states:
 
@@ -131,7 +131,7 @@ python src/predict.py --file data/new_eeg_data.csv
 
 ---
 
-## 📊 Visualizations
+##  Visualizations
 
 * **Accuracy Bar Chart** — easily compare all model accuracies
 * **Confusion Matrix** — highlights classification strengths and weaknesses
@@ -139,7 +139,7 @@ python src/predict.py --file data/new_eeg_data.csv
 
 ---
 
-## 📌 Sample Results
+##  Sample Results
 
 | Model                   | Accuracy | Precision | Recall | F1-score |
 | ----------------------- | -------- | --------- | ------ | -------- |
@@ -151,7 +151,7 @@ python src/predict.py --file data/new_eeg_data.csv
 
 ---
 
-## 📚 Research Insights
+##  Research Insights
 
 * The top EEG features (e.g., `min_q_5_b`, `mean_d_15_b`, `fft_742_b`) were dominant in emotion prediction.
 * Random Forest and Gradient Boosting consistently outperformed other models.
@@ -160,7 +160,7 @@ python src/predict.py --file data/new_eeg_data.csv
 
 ---
 
-## 📌 Notes
+##  Notes
 
 * The `data/`, `models/`, and `venv/` folders should be excluded from GitHub using `.gitignore`
 * Extend model training in `train_models.py` to add custom ML/DL models
